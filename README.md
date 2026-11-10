@@ -3,14 +3,13 @@
 **可审计的市场调研智能体** — 把一句模糊的商业问题，变成一份「每个数字都能被第三方重算一遍」的决策研究报告。
 
 <p>
+  <a href="https://github.com/TOB-L/yancec/actions/workflows/ci.yml"><img alt="ci" src="https://github.com/TOB-L/yancec/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="engine" src="https://img.shields.io/badge/engine-v0.9.90-1f6feb">
   <img alt="python" src="https://img.shields.io/badge/python-3.11%2B-3776ab">
   <img alt="node" src="https://img.shields.io/badge/node-20%2B-339933">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-2ea44f">
   <img alt="checks" src="https://img.shields.io/badge/offline%20assertions-176-brightgreen">
-  <img alt="status" src="https://img.shields.io/badge/status-research%20prototype-orange">
 </p>
-
 > **English summary**
 > Yancec is an auditable market-research agent built on a 16-node LangGraph state machine.
 > Instead of promising better answers, it makes every answer checkable: claims carry evidence
