@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!--
+      2026-09-17 修：此前是 lang="en"——一个中文产品声明成英文。
+      后果有三：① 浏览器按英文规则选字体，中文回退到次优字体；
+      ② 屏幕阅读器用英语音素读中文；③ 断行/连字符规则全错。
+      这是"声明与事实不符"在本仓库的又一次出现，只不过这次在 HTML 上。
+    -->
+    <meta name="description" content="研策 · 决策型市场调研数字员工——把一句模糊的商业问题，变成可验证的研究、可审计的证据、可执行的决策。" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- public/favicon.svg 一直存在却从未被引用过：浏览器标签页此前是默认空白图标 -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>研策 · 市场调研数字员工</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
