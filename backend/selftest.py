@@ -108,6 +108,7 @@ _SKIP_MARKERS = (
     "未给出能力判据",      # 需要真实网络探针
     "决策基线应至少",      # 需要内部基线数据文件
     "取不到指纹",          # 需要能 import 完整模型依赖
+    "项目根 .env 不存在",   # 干净 clone 只有 .env.example，缺配置不是代码错
 )
 
 
@@ -10158,6 +10159,14 @@ def test_search_channels_reach_the_call_ledger():
                 }
             }
 
+    # 无 Key 时 `_api_structured_results` 在配置门就返回 []，桩 HTTP 根本走不到——
+    # 那不是代码错，是环境缺配置。这里临时给一个假 Key 把真实通道驱动到桩上，测完还原。
+    import core.config as _C
+
+    _s = _C.get_settings()
+    _orig_key = _s.bocha_api_key
+    _s.bocha_api_key = _orig_key or "test-key-offline"
+
     _orig = S.httpx.post
     S.httpx.post = lambda *a, **k: _Resp()
     try:
@@ -10165,6 +10174,7 @@ def test_search_channels_reach_the_call_ledger():
         out = S._api_structured_results("现制咖啡 下沉 市场", 3, trace=t, subtask="st_2")
     finally:
         S.httpx.post = _orig
+        _s.bocha_api_key = _orig_key
 
     # ① 反向样本：桩没走到就说明这条测试什么也没测
     assert out, "桩 HTTP 没被走到——本测试失去意义，先修桩"
