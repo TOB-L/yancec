@@ -6,8 +6,8 @@
 - 输出"四关键词"评分表（任务理解/自主规划/工具调用/交付）——同时是参赛自查工具
 
 用法（PowerShell）：
-  cd D:\\市场调研agent\\yancec\\backend
-  ..\\venv\\Scripts\\python.exe _mrbench.py
+  cd backend
+  python mrbench.py
 
 说明：这是轻量回归版（Router/规划层确定性校验，不跑全量 LLM）。
 深版（10 题 + 全文评价 + GPT 对照）上线前补。Demo 主案例在用例 #1。
