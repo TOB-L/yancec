@@ -1,0 +1,102 @@
+# ─────────────────────────────────────────────────────────────
+# 研策 · Yancec  —  .gitignore
+# 原则：任何"跑一次就会变"的东西都不入库；任何"能换钱"的东西都不入库。
+# ─────────────────────────────────────────────────────────────
+
+# ---- 密钥与本地配置（最高优先级）----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials*.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# ---- Node / 前端 ----
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- 运行时数据（含真实调研结果、用户档案与账本）----
+backend/data/reports/*
+!backend/data/reports/.gitkeep
+backend/data/audit_bundles/*
+!backend/data/audit_bundles/.gitkeep
+backend/data/chroma/*
+!backend/data/chroma/.gitkeep
+backend/data/*.db
+backend/data/*.sqlite3
+backend/data/*.jsonl
+backend/data/*.json
+data/
+models/
+test_chroma/
+*.sqlite3
+*.db
+
+# ---- 本地检索缓存与离线模型 ----
+.cache/
+.cache_huggingface/
+hf_cache/
+*.safetensors
+*.bin
+*.onnx
+*.gguf
+
+# ---- 日志与临时产物 ----
+*.log
+backend.err.log
+logs/
+tmp/
+.tmp/
+.tmp_*
+_*_probe.txt
+_probe*.txt
+*_probe.txt
+_smoke*.txt
+*.bak
+*.bak_*
+*.orig
+*.rej
+*.swp
+*~
+
+# ---- 内部工作件（不对外）----
+_work/
+_audit_tmp/
+.veritmp/
+.vscode/
+.claude/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- 打包与演示大文件（走 Release / 外链，不入库）----
+*.zip
+*.7z
+*.rar
+*.mp4
+*.mov
+*.avi

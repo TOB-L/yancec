@@ -1,0 +1,27 @@
+# 仓库属性
+# 统一换行，避免 Windows / macOS 协作时整文件 diff
+* text=auto eol=lf
+
+*.py   text diff=python
+*.md   text
+*.json text
+*.yml  text
+*.yaml text
+*.jsx  text
+*.js   text
+*.css  text
+*.svg  text
+
+# 二进制
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary
+
+# 语言统计：文档不计入代码量
+docs/** linguist-documentation
+*.md   linguist-documentation
