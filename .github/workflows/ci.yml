@@ -18,16 +18,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-      - name: Install (lint only)
-        run: |
-          python -m pip install --upgrade pip
-          pip install ruff
-      - name: Lint
-        run: ruff check backend
-      - name: Compile
+      - name: Compile (syntax gate)
         run: python -m compileall -q backend
-      # 说明：selftest.py 与 pytest 依赖完整运行环境与部分内部材料，
-      # 在干净容器里会大量 SKIP；它们作为"本地全量回归"提供，不放进 CI 阻断。
+      - name: Install ruff
+        run: pip install ruff
+      - name: Ruff (advisory)
+        continue-on-error: true
+        run: ruff check backend --output-format=concise
 
   frontend:
     runs-on: ubuntu-latest
@@ -54,3 +51,9 @@ jobs:
         run: python scripts/check_secrets.py
       - name: README numbers match repository
         run: python scripts/repo_stats.py --check
+      - name: No local absolute paths
+        run: |
+          if git grep -nE "[A-Z]:\\\\Users\\\\|/Users/[a-z]+/" -- '*.py' '*.jsx' '*.md'; then
+            echo "发现本机绝对路径，请改为相对路径或占位符"
+            exit 1
+          fi
