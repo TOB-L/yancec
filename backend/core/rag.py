@@ -17,9 +17,11 @@
 from __future__ import annotations
 
 import logging
+import os
 import re
 import threading
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
 from core.config import get_settings
@@ -142,8 +144,10 @@ def _get_embedder():
         try:
             from FlagEmbedding import BGEM3FlagModel
 
-            # 本地模型路径（D盘，已下载好），离线加载
-            local_model_path = r"d:\市场调研agent\yancec\models\bge-m3"
+            # 本地模型路径：默认 <仓库根>/models/bge-m3，可用环境变量覆盖
+            local_model_path = os.environ.get("YANCEC_EMBED_MODEL") or str(
+                Path(__file__).resolve().parents[2] / "models" / "bge-m3"
+            )
             _embedder = BGEM3FlagModel(local_model_path, use_fp16=False)
         except Exception as e:
             logger.warning("bge-m3 加载失败，降级为哈希嵌入: %s", e)
