@@ -180,7 +180,7 @@ cd yancec
 # 1) 后端
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -e ".[dev]"
+pip install -r requirements.txt    # 国内网络可加 -i https://pypi.tuna.tsinghua.edu.cn/simple
 cp .env.example .env               # 填入自己的 Key（可留空）
 cd backend && uvicorn app:app --host 127.0.0.1 --port 8000
 
