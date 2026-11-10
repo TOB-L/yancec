@@ -10,6 +10,7 @@
   <img alt="license" src="https://img.shields.io/badge/license-MIT-2ea44f">
   <img alt="checks" src="https://img.shields.io/badge/offline%20assertions-176-brightgreen">
 </p>
+
 > **English summary**
 > Yancec is an auditable market-research agent built on a 16-node LangGraph state machine.
 > Instead of promising better answers, it makes every answer checkable: claims carry evidence
@@ -141,13 +142,13 @@ cd backend && python selftest.py
 
 176 个断言覆盖路由、MECE、来源白名单、置信度、规则层、闸门、审计包、导出、端到端状态机。运行不需要任何 API Key；缺第三方依赖、缺 `.env` 或内部材料的项会自动标记 **SKIP**，不混进失败。少数权威源探针会真实访问公开站点，无网络时相关项转 SKIP。
 
-> **基线（2026-11-09 实测，Windows / Python 3.10，干净 clone、无 `.env`）：166 通过 / 10 跳过 / 0 失败。** 装齐依赖后跳过项会真正执行，通过数上升；环境不同基线会变，所以这里报的是「有一次真实运行作证」的那组数，不是承诺值。
+> **基线（2026-11-10 实测，Windows / Python 3.13，干净 clone、无 `.env`）：164 通过 / 12 跳过 / 0 失败。** 装齐依赖后跳过项会真正执行，通过数上升；环境不同基线会变，所以这里报的是「有一次真实运行作证」的那组数，不是承诺值。
 
 ---
 
 ## 4. 实测数据（可复核）
 
-> 测量时点：2026-09-19。数字由 `scripts/repo_stats.py` 从本仓库重新计算，**不是手写的**。
+> 测量时点：2026-11-10。数字由 `scripts/repo_stats.py` 从本仓库重新计算，**不是手写的**。
 
 | 项 | 值 |
 |---|---|
@@ -174,7 +175,7 @@ cd backend && python selftest.py
 **前置**：Python 3.11+、Node.js 20+。没有 API Key 也能启动，系统进入离线演示模式并在报告头部说明降级原因。
 
 ```bash
-git clone https://github.com/<your-name>/yancec.git
+git clone https://github.com/TOB-L/yancec.git
 cd yancec
 
 # 1) 后端
@@ -211,8 +212,8 @@ docker build -t yancec:0.9.90 \
 
 ```bash
 cd backend
-python selftest.py                 # 176 个离线断言
-pip install -r requirements-dev.txt   # 需要跑测试时
+pip install -r requirements-dev.txt   # 跑测试才需要
+python selftest.py                    # 176 个离线断言
 python -m pytest -q                # 两个仓库级契约：全量断言 + 示例包哈希
 python mrbench.py                  # 8 题路由器/规划层回归
 ```
@@ -325,7 +326,7 @@ scripts/                    仓库统计与密钥扫描
   title  = {Yancec: an auditable market-research agent},
   author = {Yancec},
   year   = {2026},
-  url    = {https://github.com/<your-name>/yancec}
+  url    = {https://github.com/TOB-L/yancec}
 }
 ```
 

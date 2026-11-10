@@ -54,9 +54,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/<your-name>/yancec"
-Documentation = "https://github.com/<your-name>/yancec/tree/main/docs"
-Issues = "https://github.com/<your-name>/yancec/issues"
+Homepage = "https://github.com/TOB-L/yancec"
+Documentation = "https://github.com/TOB-L/yancec/tree/main/docs"
+Issues = "https://github.com/TOB-L/yancec/issues"
 
 [tool.ruff]
 line-length = 120
