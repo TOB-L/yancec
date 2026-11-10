@@ -8213,13 +8213,13 @@ def test_no_function_shadows_a_module_global_it_might_read_unbound():
     那 7 行不是一次写的：先崩 1 处就地补 1 行，再崩一处再补一行，**根因一次没动**。
     所以这条锁的价值不在"修好了"，在于**下一次崩的时候不会再用补一行去糊**。
 
-    判据（`_shadow_probe.py`）：模块级已绑定的名字 ＋ 函数内对它有名赋值 ＋
+    判据（`shadow_probe.py`）：模块级已绑定的名字 ＋ 函数内对它有名赋值 ＋
     存在不被任何赋值点覆盖的读取点（含嵌套函数里的闭包引用）。三条同时成立即报。
     """
     import ast as _ast
     from pathlib import Path as _P
 
-    import _shadow_probe as _sp
+    import shadow_probe as _sp
 
     # —— 反面样本：探针必须抓得到真病 ——
     # ① 历史原形：except 里就地重绑模块级 logger，嵌套函数再去读
@@ -11061,7 +11061,7 @@ def test_cite_openable_rules():
     09-16 修好了 chip 那一处、注释还留在原地，另外三处照旧——
     **一次只补一个洞，洞就会在原地重开。**
 
-    本项跑 `_cite_rules_probe.mjs`。它**从 `App.jsx` 源码里抠出判据本身**来跑，
+    本项跑 `cite_rules_probe.mjs`。它**从 `App.jsx` 源码里抠出判据本身**来跑，
     因此"判据被改坏"与"判据被绕开自己另写一份"都会在这里红。
     样本含 4 条**逐字抄自真实存档**的 URL（含那条 robots 禁止的 sohu 与三条 API）。
     """
@@ -11075,7 +11075,7 @@ def test_cite_openable_rules():
         "找不到 node —— 本项检查要靠它跑真实判据。"
         "本项目前端是交付物的一部分，缺 node 说明环境不完整，而不是这条检查可以跳过。"
     )
-    _probe = Path(__file__).resolve().parent / "_cite_rules_probe.mjs"
+    _probe = Path(__file__).resolve().parent / "cite_rules_probe.mjs"
     assert _probe.exists(), f"探针不在：{_probe}"
     _p = subprocess.run(
         [_node, str(_probe)],
