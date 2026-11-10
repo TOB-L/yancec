@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 430" width="1160" height="430" role="img" aria-label="一次调研的完整轨迹">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .t { font-family: "Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; }
+      .stage-title { font-size: 15px; font-weight: 700; fill: #0f172a; }
+      .stage-sub { font-size: 11.5px; fill: #475569; }
+      .loop { font-size: 11px; fill: #64748b; }
+      .band { font-size: 12px; fill: #334155; }
+      .band-b { font-size: 12px; font-weight: 700; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1160" height="430" rx="14" fill="#ffffff"/>
+
+  <!-- stage boxes -->
+  <g>
+    <rect x="24" y="40" width="196" height="92" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text class="t stage-title" x="44" y="70">① 理解</text>
+    <text class="t stage-sub" x="44" y="92">问题类型 · 澄清 · 研究计划</text>
+    <text class="t stage-sub" x="44" y="112">探索 / 描述 / 因果</text>
+
+    <rect x="252" y="40" width="196" height="92" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text class="t stage-title" x="272" y="70">② 取证</text>
+    <text class="t stage-sub" x="272" y="92">4 个子 Agent 并行</text>
+    <text class="t stage-sub" x="272" y="112">行业 / 竞争 / 用户 / 统计</text>
+
+    <rect x="480" y="40" width="196" height="92" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text class="t stage-title" x="500" y="70">③ 仲裁</text>
+    <text class="t stage-sub" x="500" y="92">口径冲突 · 同族多值</text>
+    <text class="t stage-sub" x="500" y="112">四维加权 → 采信值</text>
+
+    <rect x="708" y="40" width="196" height="92" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text class="t stage-title" x="728" y="70">④ 核验</text>
+    <text class="t stage-sub" x="728" y="92">五道核验 · 规则层</text>
+    <text class="t stage-sub" x="728" y="112">决策完整性闸门</text>
+
+    <rect x="936" y="40" width="196" height="92" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+    <text class="t stage-title" x="956" y="70">⑤ 交付</text>
+    <text class="t stage-sub" x="956" y="92">报告 + 审计包</text>
+    <text class="t stage-sub" x="956" y="112">六种格式 · 台账留痕</text>
+  </g>
+
+  <!-- arrows between stages -->
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)" fill="none">
+    <path d="M 220 86 L 246 86"/>
+    <path d="M 448 86 L 474 86"/>
+    <path d="M 676 86 L 702 86"/>
+    <path d="M 904 86 L 930 86"/>
+  </g>
+
+  <!-- three loops -->
+  <g stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4" fill="none" marker-end="url(#arrowLoop)">
+    <path d="M 350 132 L 350 172 L 122 172 L 122 138"/>
+    <path d="M 578 132 L 578 196 L 350 196 L 350 138"/>
+    <path d="M 806 132 L 806 220 L 578 220 L 578 138"/>
+  </g>
+  <g class="t loop">
+    <text x="146" y="188">澄清回路：范围不清楚就回去问</text>
+    <text x="372" y="212">缺口补检：拿不到就补搜，最多 3 次</text>
+    <text x="600" y="236">返工闭环：质检不通过 → 定向返工，最多 2 轮</text>
+  </g>
+
+  <!-- bottom band -->
+  <rect x="24" y="272" width="1108" height="128" rx="10" fill="#0f172a"/>
+  <text class="t" x="48" y="302" fill="#e2e8f0" font-size="13" font-weight="700">每次运行同时产出：可复算审计包（8 个文件，复算脚本仅用标准库）</text>
+  <g class="t" font-size="12" fill="#cbd5e1">
+    <text x="48" y="330">claims.csv　每条结论：状态 · 置信度 · 独立域名数 · 数据期 · 口径</text>
+    <text x="48" y="352">sources.csv　每条来源：层级 · 分组 · URL · 检索词 · 核验判定</text>
+    <text x="48" y="374">raw/　　　　检索层原始返回，未加工</text>
+    <text x="620" y="330">rules.md　　判定规则，从运行时常量导出</text>
+    <text x="620" y="352">compute.py　重算 CAGR / 同比 / 来源占比</text>
+    <text x="620" y="374">verify.py　 重探 URL 存活 + 重判结论状态</text>
+  </g>
+  <text class="t" x="48" y="394" fill="#94a3b8" font-size="11">manifest.json 记录每个文件的 SHA-256；verify.py 不需要安装任何依赖。</text>
+</svg>
