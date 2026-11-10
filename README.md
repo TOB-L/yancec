@@ -153,7 +153,7 @@ cd backend && python selftest.py
 |---|---|
 | 引擎版本 | `v0.9.90`（唯一出处 `backend/core/version.py`） |
 | 状态机 | 16 个 LangGraph 节点 / 4 个并行研究子 Agent |
-| 后端 | 81 个 `.py` / 47,509 行（含测试与工具脚本） |
+| 后端 | 82 个 `.py` / 47,514 行（含测试与工具脚本） |
 | `core/` 模块 | 65 个（证据、规则、闸门、审计、校准各自独立） |
 | 前端 | React 19 + Vite，`App.jsx` 4,882 行 |
 | 离线断言 | 176 个（`backend/selftest.py`，缺依赖项自动 SKIP） |
