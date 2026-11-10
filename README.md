@@ -36,6 +36,13 @@
 
 ---
 
+<p align="center">
+  <img src="docs/assets/demo.gif" alt="演示：输入问题 → 闸门阻断 → 报告首屏" width="880">
+</p>
+<p align="center"><sub>真实运行录屏（12 秒，已裁掉浏览器地址栏）· 完整产物见 <a href="examples/mixue-vs-heytea/">examples/mixue-vs-heytea</a></sub></p>
+
+---
+
 ## 1. 为什么做这件事
 
 大模型做研究，问题从来不是"写不出来"，而是**写得太顺**：一个没有出处的数字，被写进执行摘要；两个互相矛盾的统计口径，被并排放在两页里；一句"行业数据显示"，被当成事实。
@@ -191,11 +198,14 @@ python selftest.py                 # 176 个离线断言
 python mrbench.py                  # 8 题路由器/规划层回归
 ```
 
-**不启动服务，直接看审计包能力**：
+**不启动服务，直接看一次真实运行的产物**：
 
 ```bash
-python -c "from core.audit_bundle import *"   # 见 docs/AUDIT_PIPELINE.md
+cd examples/mixue-vs-heytea/audit_bundle
+python verify.py --quick    # 仅标准库，无需安装本项目
 ```
+
+完整报告与元数据在 [examples/mixue-vs-heytea](examples/mixue-vs-heytea/)，机制说明见 [docs/AUDIT_PIPELINE.md](docs/AUDIT_PIPELINE.md)。
 
 ---
 

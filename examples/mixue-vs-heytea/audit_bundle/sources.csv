@@ -1,0 +1,19 @@
+no,source,domain,tier,group,data_period,caliber,query,url,verdict
+1,国家统计局,stats.gov.cn,T1,政府官方,2026-09,规模以上,**正文数值抽取**：规模以上工业增加值（同比）+5.2%；采矿业增加值（同比）-1.4%；装备制造业增加值（同比）+1,https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965307.html,在源清单中
+2,国家统计局,stats.gov.cn,T1,政府官方,2026,未标注,国家统计局数据发布：2026年1—8月份社会消费品零售总额增长1.1%（2026-09-15）,https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965311.html,在源清单中
+3,国家统计局,stats.gov.cn,T1,政府官方,2025,未标注,国家统计局数据发布：2025年经济发展新动能指数增长12.5%（2026-08-27）,https://www.stats.gov.cn/sj/zxfb/202608/t20260827_1965129.html,在源清单中
+4,t.cj.sina.com.cn,sina.com.cn,T4,财经媒体,2025,范围:全国；性质:预计；主体:连锁,政策 经济 社会 技术 影响 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://t.cj.sina.com.cn/articles/view/8334520373/1f0c6b03500101rzc6,在源清单中
+5,sohu.com,sohu.com,T4,财经媒体,未标注,未标注,政策 经济 社会 技术 影响 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.sohu.com/a/939531584_121819701?scm=10001.8085_13-8085_13.0.0.0,在源清单中
+6,36kr.com,36kr.com,T4,反方检索,2024Q3,范围:全国；主体:加盟,政策 经济 社会 技术 影响 蜜雪冰城vs喜茶平价茶饮进县城扩 2026，风险 失败案例 反方观点 不利因素 可行性存疑,https://www.36kr.com/p/3675900424037250,在源清单中
+7,sohu.com,sohu.com,T4,财经媒体,未标注,未标注,宏观环境 细分数据 最新 分区域 分渠道 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.sohu.com/a/938650681_121973848?scm=10001.8085_13-8085_13.0.0.0,在源清单中
+8,World Bank,worldbank.org,T1,国际组织,2026-07,未标注,ChinaGDP年增速（World Bank，单位：%）—— 2020年 2.34；2021年 8.57；2022年 3,https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=60&date=2020:2026,在源清单中
+9,IMF,imf.org,T1,国际组织,2022,性质:预测值,中国 实际GDP增速（含预测）（IMF WEO，单位：%）—— 2022年 3.1；2023年 5.4；2024年 5；,https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH,在源清单中
+10,World Bank,worldbank.org,T1,国际组织,2026-07,未标注,ChinaGDP（现价美元）（World Bank，单位：美元）—— 2020年 15.00万亿；2021年 18.20,https://api.worldbank.org/v2/country/CHN/indicator/NY.GDP.MKTP.CD?format=json&per_page=60&date=2020:2026,在源清单中
+11,k.sina.com.cn,sina.com.cn,T4,反方检索,2024Q1,GMV,市场规模 蜜雪冰城vs喜茶平价茶饮进县城扩 2026，风险 失败案例 反方观点 不利因素 可行性存疑,https://k.sina.com.cn/article_7857201856_1d45362c001902m3om.html,在源清单中
+12,36kr.com,36kr.com,T4,财经媒体,2024H1,范围:全国；性质:预计；主体:连锁,主要玩家 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.36kr.com/p/3874912491820297,在源清单中
+13,news.china.com,china.com,T4,反方检索,未标注,未标注,主要玩家 蜜雪冰城vs喜茶平价茶饮进县城扩 2026，风险 失败案例 反方观点 不利因素 可行性存疑,https://news.china.com/socialgd/10000169/20251220/49093219_2.html,在源清单中
+14,gov.cn,gov.cn,T1,政府官方,2024Q3,范围:县域,消费者画像 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.gov.cn/zhengce/zhengceku/202607/content_7075217.htm,在源清单中
+15,ndrc.gov.cn,ndrc.gov.cn,T1,政府官方,未标注,未标注,消费者画像 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.ndrc.gov.cn/wsdwhfz/202509/t20250912_1400450.html,在源清单中
+16,cet.com.cn,cet.com.cn,T4,媒体报道,2026,主体:加盟,门槛 竞争壁垒 加盟门槛 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.cet.com.cn/wzsy/kjzx/10545702.shtml,在源清单中
+17,huxiu.com,huxiu.com,T4,媒体报道,未标注,未标注,进入壁垒 细分数据 最新 分区域 分渠道 蜜雪冰城vs喜茶平价茶饮进县城扩 2026,https://www.huxiu.com/article/4871410.html,在源清单中
+18,toutiao.com,toutiao.com,T4,媒体报道,未标注,未标注,蜜雪冰城 喜茶 县城 小红书 避雷 蜜雪冰城vs喜茶平价茶饮进县城扩 奶茶行业 2026,https://www.toutiao.com/article/7583255156330889778/,在源清单中

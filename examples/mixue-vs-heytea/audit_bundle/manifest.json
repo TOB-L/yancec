@@ -1,0 +1,59 @@
+{
+  "bundle_id": "蜜雪冰城vs喜茶平价茶饮进县城该不该扩单店模_20260917_212142",
+  "product": "研策 · 市场调研数字员工",
+  "question": "蜜雪冰城 vs 喜茶，平价茶饮进县城该不该扩？单店模型怎么算？",
+  "generated_at": "2026-09-17T21:21:42",
+  "engine": "v0.9.87",
+  "counts": {
+    "citations": 18,
+    "evidences": 29,
+    "routes": 0,
+    "raw_files": 1
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2689,
+      "sha256": "bac25533bf46da3fb349cfe84dcb681a3db15cf2d320aafdd80e6e5d56da8676"
+    },
+    {
+      "path": "claims.csv",
+      "bytes": 12277,
+      "sha256": "43a4101df563e8fe9ffa9073e49a150c7f635e581649496ec10f1c3e818469b8"
+    },
+    {
+      "path": "compute.py",
+      "bytes": 14081,
+      "sha256": "3a4fbd2fee8ac78058de0c51433a83de8a1af1f26b7da57cef4028fc05aac666"
+    },
+    {
+      "path": "rules.md",
+      "bytes": 6175,
+      "sha256": "9d715a0e4d998117b755d0e78b1ae14ed8ae0b70e4fba1f86f0227c67e109d7e"
+    },
+    {
+      "path": "sources.csv",
+      "bytes": 4505,
+      "sha256": "0afd69120dbff1ae9cbca4f17321bf538ffdf18b30703e0d4aa2b152bcf1f543"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 5708,
+      "sha256": "a85758b9d89cc8d3ae0150c04ad8124acc7103b994d713195d8916d173499217"
+    },
+    {
+      "path": "raw/authorities.json",
+      "bytes": 6304,
+      "sha256": "c6797be9357bf5fdbb1e197a7dc557c3dae1a7c0170b9ad0b6888fc33971c254"
+    }
+  ],
+  "how_to_reproduce": [
+    "python verify.py",
+    "python compute.py",
+    "打开 claims.csv 抽查原文"
+  ],
+  "not_claimable": [
+    "数字是否真的出自该页原文（需人工核验）",
+    "LLM 撰写文字的分析恰当性（属判断）"
+  ]
+}

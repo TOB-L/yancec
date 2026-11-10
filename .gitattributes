@@ -25,3 +25,7 @@
 # 语言统计：文档不计入代码量
 docs/** linguist-documentation
 *.md   linguist-documentation
+
+# 示例审计包必须保持字节原样：manifest.json 里存了每个文件的 SHA-256，
+# 一旦被换行转换改写，verify.py 的完整性校验就会失败。
+examples/** -text
