@@ -1,0 +1,24 @@
+name: Feature request
+description: 提议一个新能力或新规则
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的判断问题
+      description: 不要从"加一个功能"出发，先说清楚"哪一类判断现在做不了"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 方案
+    validations:
+      required: true
+  - type: textarea
+    id: falsify
+    attributes:
+      label: 怎么证明它有效 / 无效
+      description: 阳性用例、阴性对照、以及它可能误报的场景
+    validations:
+      required: true

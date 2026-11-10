@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 590" width="1160" height="590" role="img" aria-label="系统分层总览">
+  <defs>
+    <style>
+      .t { font-family: "Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; }
+      .layer { font-size: 13px; font-weight: 700; fill: #0f172a; }
+      .note { font-size: 11.5px; fill: #64748b; }
+      .chip { font-size: 12px; fill: #1e293b; }
+      .chip-s { font-size: 10.5px; fill: #64748b; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1160" height="590" rx="14" fill="#ffffff"/>
+
+  <!-- L1 -->
+  <rect x="24" y="28" width="1112" height="72" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="t layer" x="44" y="56">接入层</text>
+  <text class="t note" x="44" y="78">不允许调用模型</text>
+  <g class="t chip">
+    <rect x="230" y="44" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="248" y="68">REST / SSE 流式</text>
+    <rect x="396" y="44" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="414" y="68">六种格式导出</text>
+    <rect x="562" y="44" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="580" y="68">/health 自检</text>
+    <rect x="728" y="44" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="746" y="68">任务与 Trace</text>
+  </g>
+
+  <!-- L2 -->
+  <rect x="24" y="112" width="1112" height="72" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="t layer" x="44" y="140">编排层</text>
+  <text class="t note" x="44" y="162">16 节点 · 可中断续跑</text>
+  <g class="t chip">
+    <rect x="230" y="128" width="170" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="248" y="152">LangGraph 状态机</text>
+    <rect x="416" y="128" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="434" y="152">检查点 / 续跑</text>
+    <rect x="582" y="128" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="600" y="152">预算门</text>
+    <rect x="748" y="128" width="150" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="766" y="152">返工 ≤ 2 轮</text>
+  </g>
+
+  <!-- L3 -->
+  <rect x="24" y="196" width="1112" height="90" rx="9" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text class="t layer" x="44" y="224">研究层</text>
+  <text class="t note" x="44" y="246">唯一允许调用模型</text>
+  <g class="t chip">
+    <rect x="230" y="212" width="170" height="56" rx="6" fill="#fff" stroke="#93c5fd"/><text x="248" y="236">industry</text><text class="t chip-s" x="248" y="254">宏观 / 规模 / 壁垒</text>
+    <rect x="416" y="212" width="170" height="56" rx="6" fill="#fff" stroke="#93c5fd"/><text x="434" y="236">competition</text><text class="t chip-s" x="434" y="254">格局 / 份额 / 价格</text>
+    <rect x="602" y="212" width="170" height="56" rx="6" fill="#fff" stroke="#93c5fd"/><text x="620" y="236">user</text><text class="t chip-s" x="620" y="254">画像 / 需求 / 声音</text>
+    <rect x="788" y="212" width="170" height="56" rx="6" fill="#fff" stroke="#93c5fd"/><text x="806" y="236">statistics</text><text class="t chip-s" x="806" y="254">口径 / 时序 / 校验</text>
+  </g>
+  <text class="t note" x="974" y="236">工具名单按子任务隔离</text>
+  <text class="t note" x="974" y="254">越界即断言失败</text>
+
+  <!-- L4 -->
+  <rect x="24" y="298" width="1112" height="72" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text class="t layer" x="44" y="326">工具与数据层</text>
+  <text class="t note" x="44" y="348">白名单 + 健康探针</text>
+  <g class="t chip">
+    <rect x="230" y="314" width="170" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="248" y="338">千问 / 博查 / Bing</text>
+    <rect x="416" y="314" width="170" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="434" y="338">权威源直取（11）</text>
+    <rect x="602" y="314" width="170" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="620" y="338">注册表（17）</text>
+    <rect x="788" y="314" width="170" height="38" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="806" y="338">向量检索（可选）</text>
+  </g>
+
+  <!-- L5 -->
+  <rect x="24" y="382" width="1112" height="104" rx="9" fill="#fef2f2" stroke="#fecaca"/>
+  <text class="t layer" x="44" y="410">规则与判定层</text>
+  <text class="t note" x="44" y="432">纯函数 · 零模型</text>
+  <g class="t chip">
+    <rect x="230" y="398" width="170" height="38" rx="6" fill="#fff" stroke="#fca5a5"/><text x="248" y="422">R1–R15 规则层</text>
+    <rect x="416" y="398" width="170" height="38" rx="6" fill="#fff" stroke="#fca5a5"/><text x="434" y="422">五道核验</text>
+    <rect x="602" y="398" width="170" height="38" rx="6" fill="#fff" stroke="#fca5a5"/><text x="620" y="422">自一致性 11 对</text>
+    <rect x="788" y="398" width="170" height="38" rx="6" fill="#fff" stroke="#fca5a5"/><text x="806" y="422">核验器校准</text>
+    <rect x="974" y="398" width="140" height="38" rx="6" fill="#fff" stroke="#fca5a5"/><text x="992" y="422">闸门 BLOCK</text>
+  </g>
+  <text class="t note" x="230" y="466">闸门只能把交付往更保守的方向推：Go → Validate → No-Go；它不改写正文数字，只拒绝"可以直接行动"的口吻。</text>
+
+  <!-- L6 -->
+  <rect x="24" y="500" width="1112" height="70" rx="9" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text class="t layer" x="44" y="528">交付层</text>
+  <text class="t note" x="44" y="550">同刻产出，四项对齐</text>
+  <g class="t chip">
+    <rect x="230" y="514" width="170" height="38" rx="6" fill="#fff" stroke="#86efac"/><text x="248" y="538">报告（干净版）</text>
+    <rect x="416" y="514" width="170" height="38" rx="6" fill="#fff" stroke="#86efac"/><text x="434" y="538">审计包（8 文件）</text>
+    <rect x="602" y="514" width="170" height="38" rx="6" fill="#fff" stroke="#86efac"/><text x="620" y="538">运行台账</text>
+    <rect x="788" y="514" width="170" height="38" rx="6" fill="#fff" stroke="#86efac"/><text x="806" y="538">AI 生成标识</text>
+  </g>
+</svg>
