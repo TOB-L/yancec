@@ -153,7 +153,7 @@ cd backend && python selftest.py
 |---|---|
 | 引擎版本 | `v0.9.90`（唯一出处 `backend/core/version.py`） |
 | 状态机 | 16 个 LangGraph 节点 / 4 个并行研究子 Agent |
-| 后端 | 82 个 `.py` / 47,514 行（含测试与工具脚本） |
+| 后端 | 83 个 `.py` / 47,573 行（含测试与工具脚本） |
 | `core/` 模块 | 65 个（证据、规则、闸门、审计、校准各自独立） |
 | 前端 | React 19 + Vite，`App.jsx` 4,882 行 |
 | 离线断言 | 176 个（`backend/selftest.py`，缺依赖项自动 SKIP） |
@@ -190,11 +190,26 @@ npm install
 npm run dev                        # http://127.0.0.1:5173
 ```
 
+**Docker（可选，一条命令起完整服务）**：
+
+```bash
+docker build -t yancec:0.9.90 .
+docker run --rm -p 8000:8000 --env-file .env yancec:0.9.90
+
+# 国内网络构建（走镜像源）
+docker build -t yancec:0.9.90 \
+  --build-arg NPM_REGISTRY=https://registry.npmmirror.com \
+  --build-arg PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple .
+```
+
+前端在构建阶段打包，运行时由后端同源托管，打开 `http://127.0.0.1:8000` 即可（不需要再起 5173）。
+
 **先跑自测，再跑产品**：
 
 ```bash
 cd backend
 python selftest.py                 # 176 个离线断言
+python -m pytest -q                # 两个仓库级契约：全量断言 + 示例包哈希
 python mrbench.py                  # 8 题路由器/规划层回归
 ```
 

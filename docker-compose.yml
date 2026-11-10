@@ -1,0 +1,15 @@
+services:
+  yancec:
+    build: .
+    image: yancec:0.9.90
+    ports:
+      - "8000:8000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8000"
+      # 未配置 Key 时自动进入离线演示模式，并在报告头部说明降级原因
+      YANCEC_OFFLINE: "${YANCEC_OFFLINE:-0}"
+    volumes:
+      # 报告与台账落在宿主机，容器重建不丢
+      - ./backend/data:/app/backend/data
+    restart: unless-stopped
