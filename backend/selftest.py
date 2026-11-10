@@ -8822,11 +8822,11 @@ def test_prompt_fingerprint_invalidates_calibration():
     _found = 0
     for _r, _ds, _fs in _os.walk(_HERE.parent):
         # 跳过点开头目录：.venv / .tox / .nox / .mypy_cache 里全是第三方包，
-            # 它们的 *_PROMPT 常量不是本仓库的提示词（实测：不跳过时 15 条会虚报成 26 条）。
-            _ds[:] = [
-                x for x in _ds
-                if x not in ("__pycache__", "venv", "node_modules", "data") and not x.startswith(".")
-            ]
+        # 它们的 *_PROMPT 常量不是本仓库的提示词（实测：不跳过时 15 条会虚报成 26 条）。
+        _ds[:] = [
+            x for x in _ds
+            if x not in ("__pycache__", "venv", "node_modules", "data") and not x.startswith(".")
+        ]
         for _f in _fs:
             if not _f.endswith(".py"):
                 continue

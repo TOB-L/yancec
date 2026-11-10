@@ -100,3 +100,7 @@ Thumbs.db
 *.mp4
 *.mov
 *.avi
+
+# 自测输出（本地排查用，不入库）
+backend/selftest-out.txt
+selftest-*.txt

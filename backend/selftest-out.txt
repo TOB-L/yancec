@@ -1,4 +1,0 @@
-  File "C:\Users\33631\Desktop\yancec-public-20261109-fixed\yancec\backend\selftest.py", line 8830
-    for _f in _fs:
-                  ^
-IndentationError: unindent does not match any outer indentation level
