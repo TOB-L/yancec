@@ -209,6 +209,7 @@ docker build -t yancec:0.9.90 \
 ```bash
 cd backend
 python selftest.py                 # 176 个离线断言
+pip install -r requirements-dev.txt   # 需要跑测试时
 python -m pytest -q                # 两个仓库级契约：全量断言 + 示例包哈希
 python mrbench.py                  # 8 题路由器/规划层回归
 ```

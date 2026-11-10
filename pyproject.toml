@@ -70,6 +70,11 @@ ignore = ["E501"]
 [tool.pytest.ini_options]
 testpaths = ["backend/tests"]
 pythonpath = ["backend"]
+# 默认只跑确定性用例；端到端（e2e）会触网/调模型，需显式 `pytest -m e2e`
+addopts = "-m 'not e2e'"
+markers = [
+    "e2e: 端到端链路，需要网络或模型凭据，默认跳过",
+]
 
 # 源码在 backend/ 下，包根不是仓库根。
 # 不显式声明的话，setuptools 会在 flat-layout 里同时看到 backend/ 与 frontend/ 并直接报错。

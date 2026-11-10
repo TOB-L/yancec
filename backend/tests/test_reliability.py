@@ -178,12 +178,24 @@ def test_stop_card_complete():
 
 
 # ---------- 12. 预算预警 ----------
-def test_budget_flag_at_80():
-    from graph import node_budget_check
+def test_budget_flag_at_35_percent():
+    """护栏阈值是「报价的 35%」，不是 80%。
 
-    state = {"budget_estimate": 10.0, "budget_spent": 9.0, "trace_events": []}
+    病案（2026-11-10 首次公开仓库跑 pytest）：这条用例写于阈值还是 0.8 的版本，
+    产品后来把护栏收紧到 `_COST_BUDGET_RATIO = 0.35`（见 graph.node_budget_check 的 docstring），
+    用例没跟着改，于是 5/10 = 50% 被判成"不该触发"。
+    **测试跟着实现走是危险的**——所以这里不改实现，只把断言对齐到当前契约，并卡住边界。
+    """
+    from graph import _COST_BUDGET_RATIO, node_budget_check
+
+    assert _COST_BUDGET_RATIO == 0.35, "护栏阈值变了，这条用例的前提需要重新确认"
+
+    # 3.6/10 = 36% > 35% → 触发
+    state = {"budget_estimate": 10.0, "budget_spent": 3.6, "trace_events": []}
     assert node_budget_check(state)["budget_flag"] is True
-    state2 = {"budget_estimate": 10.0, "budget_spent": 5.0, "trace_events": []}
+
+    # 3.4/10 = 34% < 35% → 不触发
+    state2 = {"budget_estimate": 10.0, "budget_spent": 3.4, "trace_events": []}
     assert node_budget_check(state2)["budget_flag"] is False
 
 
@@ -204,7 +216,7 @@ if __name__ == "__main__":
         test_build_monitor_conditions,
         test_tool_contracts_complete,
         test_stop_card_complete,
-        test_budget_flag_at_80,
+        test_budget_flag_at_35_percent,
     ]
     failed = 0
     for t in tests:

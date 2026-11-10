@@ -10,6 +10,12 @@
 import sys
 import os
 
+import pytest
+
+# 端到端会真的构建状态机并跑完整链路，可能触网/调模型，默认不纳入 `pytest -q`。
+# 需要时显式运行：pytest -m e2e
+pytestmark = pytest.mark.e2e
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from core.models import Evidence, Source, SourceLevel

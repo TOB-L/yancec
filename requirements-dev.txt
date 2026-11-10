@@ -1,0 +1,5 @@
+# 开发与测试依赖（运行产品不需要）
+-r requirements.txt
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+ruff>=0.5.0
