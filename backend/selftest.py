@@ -11121,7 +11121,7 @@ def test_frontend_doc_anchors_are_live():
     import re as _re
 
     _root = Path(__file__).resolve().parents[1]          # yancec/
-    _mat = Path(__file__).resolve().parents[2]           # 市场调研agent/（材料所在处）
+    _mat = Path(__file__).resolve().parents[2]           # 仓库根（材料目录所在处）
     _doc_p = _mat / "研策_前端功能清单_v1_20260919.md"
     assert _doc_p.exists(), f"清单不在：{_doc_p}"
     _doc = _doc_p.read_text(encoding="utf-8", errors="replace")
