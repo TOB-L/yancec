@@ -1,0 +1,39 @@
+name: Bug report
+description: 报告一个可复现的问题
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先确认：`python backend/selftest.py` 是否通过。
+        如果问题涉及密钥或未公开数据，请改用 Security → Advisories。
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象
+      description: 实际发生了什么，期望发生什么
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 配置 ...
+        2. 运行 ...
+        3. 看到 ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 引擎版本
+      description: 见 backend/core/version.py 或报告头部
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志
+      description: 请删除其中的 Key、个人路径与业务数据
+      render: shell
