@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you reference this project in a paper, report, or course work, please cite it as below."
+title: "Yancec: an auditable market-research agent"
+abstract: >-
+  An evidence-driven market research agent built on a 16-node LangGraph state machine.
+  Claims carry sources, levels and confidence; a deterministic rule layer detects numeric
+  conflicts; and every run ships an eight-file audit bundle whose verification scripts
+  recompute the report using the Python standard library alone.
+authors:
+  - name: "TOB-L"
+    alias: "Yancec"
+version: "0.9.90"
+date-released: "2026-11-10"
+license: MIT
+repository-code: "https://github.com/TOB-L/yancec"
+url: "https://github.com/TOB-L/yancec"
+keywords:
+  - ai-agent
+  - langgraph
+  - market-research
+  - auditability
+  - llm
+  - rag
