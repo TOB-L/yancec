@@ -53,7 +53,7 @@ jobs:
         run: python scripts/repo_stats.py --check
       - name: No local absolute paths
         run: |
-          if git grep -nE "[A-Z]:\\\\Users\\\\|/Users/[a-z]+/" -- '*.py' '*.jsx' '*.md'; then
+          if git grep -nE "[A-Z]:\\\\Users\\\\|/Users/[a-z]+/" -- '*.py' '*.jsx' '*.md' '*.toml' '*.yml' '*.yaml' '*.json' '*.cff' '*.cfg' '*.ini'; then
             echo "发现本机绝对路径，请改为相对路径或占位符"
             exit 1
           fi
