@@ -50,6 +50,11 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
+      # 中文字体：PDF 导出的字形用例是"真导出一次再把文字提取回来检查"，
+      # runner 上没有中文字体时它必须红——所以这里装的和 Dockerfile 里装的是同一个字体，
+      # 让 CI 与镜像对"中文能不能画出来"持同一把尺。
+      - name: Install CJK font
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-wqy-zenhei
       - name: Offline assertions (176)
         run: python selftest.py
         working-directory: backend

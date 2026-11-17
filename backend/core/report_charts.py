@@ -297,20 +297,24 @@ def metric_chart_pngs(md_cells_rows: list[list[str]], table_title: str = "") -> 
         matplotlib.use("Agg")
         from matplotlib import font_manager as _fm, pyplot as plt
 
+        # 中文字体走与 PDF 导出**同一个解析器**（`core.fonts`）。
+        # 病案（2026-11-17，CI 第一次真跑 Linux）：这里原先也只写了 Windows 路径，
+        # Windows 上一直正常，Linux / 容器里图表的中文会变成方块。
         _name = None
-        for _fp in (
-            r"C:\Windows\Fonts\msyh.ttc",
-            r"C:\Windows\Fonts\simhei.ttf",
-            r"C:\Windows\Fonts\simsun.ttc",
-        ):
+        try:
+            from core.fonts import resolve_cjk_font
+
+            _fp = resolve_cjk_font()
+        except Exception:
+            _fp = None
+        if _fp:
             try:
                 _fm.fontManager.addfont(_fp)
                 _name = _fm.FontProperties(fname=_fp).get_name()
-                break
             except Exception:
-                continue
+                _name = None
         plt.rcParams["font.sans-serif"] = ([_name] if _name else []) + [
-            "Microsoft YaHei", "SimHei", "DejaVu Sans",
+            "Microsoft YaHei", "SimHei", "Noto Sans CJK SC", "WenQuanYi Zen Hei", "DejaVu Sans",
         ]
         plt.rcParams["axes.unicode_minus"] = False
     except Exception:

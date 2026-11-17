@@ -24,8 +24,12 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 # libgomp 是部分数值依赖的运行时库；chromadb 的 wheel 需要它
+# fonts-wqy-zenhei：PDF 与图表里的**中文**字体。
+# 病案（2026-11-17）：镜像里原先没有任何中文字体，而字体候选表也只写了 Windows 路径
+# → 容器导出的 PDF 中文全空白（含法定 AI 标识）。这里补上，`core/fonts.py` 会自动认到，
+# 且该字体画不出中文时 `resolve_cjk_font()` 会继续找下一个、全都没有就拒发而不是印空白。
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libgomp1 \
+    && apt-get install -y --no-install-recommends libgomp1 fonts-wqy-zenhei \
     && rm -rf /var/lib/apt/lists/*
 
 ARG PIP_INDEX_URL=https://pypi.org/simple

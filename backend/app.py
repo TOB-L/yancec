@@ -1180,15 +1180,39 @@ def export_report(
         except ImportError:
             raise HTTPException(status_code=400, detail="PDF导出组件未安装，请运行: pip install reportlab")
 
-        # 中文字体：微软雅黑(TTC)/黑体(TTF)，都失败则退回默认
+        # 中文字体：跨平台解析（Windows msyh·simhei / Linux Noto CJK·文泉驿 / macOS PingFang）。
+        #
+        # 病案（2026-11-17，CI 第一次真跑 Linux 时抓到的）：候选表原先**只写了 Windows 路径**，
+        # 在 Ubuntu / Docker 里必然全部失败 → 静默退回 `Helvetica` → 中文全部渲染成空白，
+        # 而法定 AI 显式标识（GB 45438）正是这份 PDF 里最该被看清的那一行。
+        # 这个缺陷在 Windows 上永远测不出来（本地 selftest 一直是绿的）。
+        #
+        # 现在的做法：找不到字体就**拒发并说清原因**，不再静默降级成
+        # "接口 200、内容是空白"。降级必须告警——空白不算告警。
         _FONT = "YancecCJK"
         try:
-            pdfmetrics.registerFont(TTFont(_FONT, r"C:\Windows\Fonts\msyh.ttc", subfontIndex=0))
+            from core.fonts import resolve_cjk_font
         except Exception:
-            try:
-                pdfmetrics.registerFont(TTFont(_FONT, r"C:\Windows\Fonts\simhei.ttf"))
-            except Exception:
-                _FONT = "Helvetica"
+            resolve_cjk_font = None  # type: ignore[assignment]
+        _font_path = resolve_cjk_font() if resolve_cjk_font else None
+        if not _font_path:
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "PDF 导出缺中文字体：本机没找到任何能画出中文的字体，"
+                    "导出会把中文印成空白（法定 AI 标识也会一起消失），因此拒绝导出。"
+                    "请安装 fonts-noto-cjk（Debian/Ubuntu），"
+                    "或用环境变量 YANCEC_CJK_FONT 指向一个含中文的字体文件。"
+                ),
+            )
+        try:
+            _kw = {"subfontIndex": 0} if _font_path.lower().endswith((".ttc", ".otc")) else {}
+            pdfmetrics.registerFont(TTFont(_FONT, _font_path, **_kw))
+        except Exception as _e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"中文字体加载失败（{_font_path}）：{_e}",
+            )
 
         st_title = ParagraphStyle("t", fontName=_FONT, fontSize=16, leading=22, spaceAfter=10)
         st_h = ParagraphStyle("h", fontName=_FONT, fontSize=13, leading=18, spaceBefore=8, spaceAfter=3)
@@ -1233,8 +1257,8 @@ def export_report(
         }
 
         def _font_ok(ch: str) -> bool:
-            if _FONT == "Helvetica":
-                return ord(ch) < 256
+            # `_FONT` 现在一定是一个真加载成功的中文字体（找不到字体上面已经 503 了），
+            # 所以不再有 "Helvetica 只认 ASCII" 这条分支——留着它就是一条永远走不到的死路。
             try:
                 return ord(ch) in pdfmetrics.getFont(_FONT).face.charToGlyph
             except Exception:
