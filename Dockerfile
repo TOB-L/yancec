@@ -28,7 +28,21 @@ WORKDIR /app
 # 病案（2026-11-17）：镜像里原先没有任何中文字体，而字体候选表也只写了 Windows 路径
 # → 容器导出的 PDF 中文全空白（含法定 AI 标识）。这里补上，`core/fonts.py` 会自动认到，
 # 且该字体画不出中文时 `resolve_cjk_font()` 会继续找下一个、全都没有就拒发而不是印空白。
-RUN apt-get update \
+#
+# APT_MIRROR：Debian 源镜像。这一步是本文件里**唯一**会真的去 deb.debian.org 拉包的地方，
+# 而国内直连实测 7.5 MB 的字体包拉了 6 分钟仍断流（2026-11-17）。默认空 = 官方源，
+# 国内建议：
+#   --build-arg APT_MIRROR=mirrors.aliyun.com
+ARG APT_MIRROR=
+RUN if [ -n "$APT_MIRROR" ]; then \
+        if [ -f /etc/apt/sources.list.d/debian.sources ]; then \
+            sed -i "s|deb.debian.org|${APT_MIRROR}|g" /etc/apt/sources.list.d/debian.sources; \
+        fi; \
+        if [ -f /etc/apt/sources.list ]; then \
+            sed -i "s|deb.debian.org|${APT_MIRROR}|g" /etc/apt/sources.list; \
+        fi; \
+    fi \
+    && apt-get update \
     && apt-get install -y --no-install-recommends libgomp1 fonts-wqy-zenhei \
     && rm -rf /var/lib/apt/lists/*
 

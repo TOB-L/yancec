@@ -29,7 +29,7 @@
 
 | 时间 | 事件 |
 |---|---|
-| 2026-11 | 仓库公开：CI 五个 job 全绿（含 176 项离线断言）；Docker 镜像 1.11 GB，容器 20 秒进入 healthy |
+| 2026-11 | 仓库公开：CI 五个 job 全绿（含 176 项离线断言）；Docker 镜像 1.11 GB（2026-11-10 实测，**不含**此后补装的中文字体），容器 20 秒进入 healthy |
 | 2026-11 | `examples/` 开放：一次真实运行的完整报告 + 8 文件审计包，7 个文件的 SHA-256 可复算 |
 | 2026-11 | 安全基线：Secret scanning、Push protection 开启，依赖告警清零（7 条均为 devDependencies，已逐条 dismiss 并留理由） |
 | 2026-09 | `v0.9.90` 冻结：176 项离线断言；示例报告保留的是 **v0.9.87 / 2026-09-17** 那次被闸门拦下的真实运行（BLOCK 3 项），未随引擎升级重跑——重跑会覆盖掉原始证据 |
@@ -232,15 +232,21 @@ docker build -t yancec:0.9.90 .
 docker run --rm -p 8000:8000 --env-file .env yancec:0.9.90
 
 # 国内网络构建（走镜像源）
+# 三个参数分别对应镜像里会出网的三步：npm 装前端、pip 装后端、apt 装中文与运行时库
 docker build -t yancec:0.9.90 \
   --build-arg NPM_REGISTRY=https://registry.npmmirror.com \
-  --build-arg PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple .
+  --build-arg PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple \
+  --build-arg APT_MIRROR=mirrors.aliyun.com .
 ```
 
 前端在构建阶段打包，运行时由后端同源托管，打开 `http://127.0.0.1:8000` 即可（不需要再起 5173）。
 
 实测（2026-11-10，Docker Desktop / linux-x86_64）：镜像 **1.11 GB**，容器启动约 **20 秒**进入 healthy，`GET /health` 返回
 `{"status":"ok","service":"yancec","version":"v0.9.90"}`。
+
+> 上面这个 1.11 GB 是 **2026-11-10** 那次构建的实测值。2026-11-17 起镜像额外安装 `fonts-wqy-zenhei`
+> （补上中文字体，否则容器导出的 PDF 中文是空白），体积会略增；该数值待下次完整构建后重新实测再更新，
+> 在此之前不按推算值改写——**没量过就不写新数**。
 
 **先跑自测，再跑产品**：
 
