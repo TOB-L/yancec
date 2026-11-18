@@ -16,7 +16,7 @@
   "depth": "deep",              // free / standard / deep / custom
   "status": "success",          // success / partial / failed / stopped
   "elapsed_sec": 573.4,
-  "tokens": { "prompt": 0, "completion": 0, "total": 245000 },
+  "tokens": { "prompt": 198000, "completion": 47000, "total": 245000 },
   "calls": 96,                  // 工具调用总次数
   "routes": 12,                 // 实际发出的源族数
   "evidence": 63,               // 证据条数
@@ -88,7 +88,7 @@ curl -s localhost:8000/health | jq .started_at
 | 报告数字与台账不一致 | `run_id` 是否同一跑 | 以同刻审计包为准 |
 | 来源全是同一家 | 注册表健康探针、`degraded` 计数 | 换通道或补直取源 |
 | 闸门不 BLOCK | 决策区定义、规则命中位置 | 先看 `findings.where` |
-| 导出 PDF 中文乱码 | 字体是否嵌入 | 用 LibreOffice 转，检查字体 |
+| 导出 PDF 中文乱码 | 后端能否解析到中文字体（`core/fonts.py`） | 装 `fonts-noto-cjk` 或 `fonts-wqy-zenhei`，或设 `YANCEC_CJK_FONT`。找不到字体时接口直接返回 503 并说明原因，不会产出空白 PDF |
 | 前端读数为 0 | 后端事件是否发出 | 查 SSE 日志，不要改前端兜底 |
 
 ## 8. 日志

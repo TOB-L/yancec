@@ -54,7 +54,7 @@ flowchart LR
 | 3 | `route_skill` | 规则 | 选择方法论包（market-entry 等） | 回退通用框架 |
 | 4–7 | `industry` `competition` `user` `statistics` | 模型 + 工具 | 四维并行取证 | 单维度空手而归是合法结果 |
 | 8 | `check_conflict` | 规则 + 模型 | 口径冲突、同族多值、量纲检查 | 记录冲突并降置信度 |
-| 9 | `replan` | 规则 | 缺口驱动的追加检索（≤3 次） | 停止并披露缺口 |
+| 9 | `replan` | 规则 | 缺口驱动的追加检索（只补一轮；标准档 ≤2 条、深入档 ≤3 条） | 停止并披露缺口 |
 | 10 | `summarize` | 模型 | 结构化汇总，不新增事实 | 保留原始结构化数据 |
 | 11 | `budget_check` | 规则 | 积分/预算门，超限停止 | 返回已得结果 + 停止原因 |
 | 12 | `quality_check` | 规则 + 模型 | 质检，产出 fatal/major 问题 | 进入返工 |
