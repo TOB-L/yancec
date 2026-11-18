@@ -280,7 +280,7 @@ backend/
 │   ├── researchers.py      4 个子 Agent + 确定性测算
 │   ├── quality.py          质检（规则层 + 模型复核）
 │   └── decision.py         决策判定 + 14 天验证任务
-├── core/                   65 个模块
+├── core/                   66 个模块
 │   ├── rule_lint.py        R1–R15 规则层
 │   ├── integrity_gate.py   决策完整性闸门
 │   ├── audit_bundle.py     可复算审计包
